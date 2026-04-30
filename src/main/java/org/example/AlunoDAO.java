@@ -1,13 +1,26 @@
 package org.example;
 
+import com.mysql.cj.protocol.Resultset;
+
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+/*Create - Criar
+ *Read - Bucar
+ *Update - Atualizar
+ *Delete - Deletar
+ */
 
 public class AlunoDAO {
     //Atributos
     private Connection conexao;
 
+    //Construtor
     public AlunoDAO(Connection conexao) {
         this.conexao = conexao;
     }
@@ -16,6 +29,7 @@ public class AlunoDAO {
     public void salvar(Aluno aluno){
         String sql = "INSERT INTO aluno (nome, idade, serie, turma) values (?, ?, ?, ?)";
 
+
         try(PreparedStatement stmt = conexao.prepareStatement(sql)){
             stmt.setString(1, aluno.getNome());
             stmt.setInt(2, aluno.getIdade());
@@ -23,21 +37,34 @@ public class AlunoDAO {
             stmt.setString(4, aluno.getTurma());
 
             stmt.executeUpdate();
+            System.out.println("Dados Salvo com sucesso");
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
-    public Connection getConexao() {
-        return conexao;
+    public List<Aluno> dados(){
+
+        String sql = "Select * from aluno";
+
+        List<Aluno> alunos = new ArrayList<>();
+
+        ResultSet rset = null;
+        try(PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+            rset = stmt.executeQuery();
+
+            while(rset.next()){
+                Aluno alunosdad = new Aluno();
+
+                alunosdad.setNome(rset.getString("nome"));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    return dados();
     }
 
-    public void setConexao(Connection conexao) {
-        this.conexao = conexao;
-    }
-    public void consultar(){
-    //testegit
-        //teste
-    }
 }
+

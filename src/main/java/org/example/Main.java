@@ -1,6 +1,7 @@
 package org.example;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,5 +16,11 @@ public class Main {
     aluno.setTurma("A");
 
     dados.salvar(aluno);
+
+    try {
+     if (con != null) con.close();
+     } catch (SQLException e) {
+         e.printStackTrace();
+     }
     }
 }

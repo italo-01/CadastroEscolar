@@ -21,7 +21,6 @@ public class Conexao {
 
         } catch (SQLException e) {
             System.out.println("Erro na conexão com o banco de dados " + e.getMessage());
-            return null;
-        }
+        }   return null;
     }
 }
