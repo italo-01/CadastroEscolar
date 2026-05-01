@@ -21,7 +21,12 @@ public class Aluno {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        if (nome != null ) {
+            this.nome = nome.substring(0,1).toUpperCase() + nome.substring(1).toLowerCase();
+
+        } else{
+            this.nome = nome;
+        }
     }
 
     public int getIdade() {
@@ -37,7 +42,11 @@ public class Aluno {
     }
 
     public void setSerie(String serie) {
-        this.serie = serie;
+        if (serie != null && !serie.contains("° Ano")) {
+            this.serie = serie + "° Ano";
+        } else{
+            this.serie = serie;
+        }
     }
 
     public String getTurma() {
@@ -45,7 +54,7 @@ public class Aluno {
     }
 
     public void setTurma(String turma) {
-        this.turma = turma;
+        this.turma = turma.substring(0,1).toUpperCase();
     }
 }
 

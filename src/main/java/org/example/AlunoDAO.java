@@ -44,7 +44,7 @@ public class AlunoDAO {
         }
     }
 
-    public List<Aluno> dados(){
+    public List<Aluno> dadosDao(){
 
         String sql = "Select * from aluno";
 
@@ -59,11 +59,16 @@ public class AlunoDAO {
                 Aluno alunosdad = new Aluno();
 
                 alunosdad.setNome(rset.getString("nome"));
+                alunosdad.setIdade(rset.getInt("idade"));
+                alunosdad.setSerie(rset.getString("serie"));
+                alunosdad.setTurma(rset.getString("turma"));
+
+                alunos.add(alunosdad);
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
-    return dados();
+    return alunos;
     }
 
 }
