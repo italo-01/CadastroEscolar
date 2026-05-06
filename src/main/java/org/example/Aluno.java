@@ -1,10 +1,12 @@
 package org.example;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class Aluno {
     //Atributos
     private int id;
     private String nome;
-    private int idade;
+    private LocalDate dataNascimento;
     private String serie;
     private String turma;
 
@@ -30,11 +32,11 @@ public class Aluno {
     }
 
     public int getIdade() {
-        return idade;
+        return Period.between(dataNascimento, LocalDate.now()).getYears();
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setDataNascimento(LocalDate idade) {
+        this.dataNascimento = idade;
     }
 
     public String getSerie() {
@@ -42,11 +44,7 @@ public class Aluno {
     }
 
     public void setSerie(String serie) {
-        if (serie != null && !serie.contains("° Ano")) {
-            this.serie = serie + "° Ano";
-        } else{
             this.serie = serie;
-        }
     }
 
     public String getTurma() {

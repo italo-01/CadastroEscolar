@@ -59,7 +59,7 @@ public class AlunoDAO {
                 Aluno alunosdad = new Aluno();
 
                 alunosdad.setNome(rset.getString("nome"));
-                alunosdad.setIdade(rset.getInt("idade"));
+                alunosdad.setDataNascimento(rset.getDate("data_nascimento").toLocalDate());
                 alunosdad.setSerie(rset.getString("serie"));
                 alunosdad.setTurma(rset.getString("turma"));
 
@@ -69,6 +69,18 @@ public class AlunoDAO {
             e.printStackTrace();
         }
     return alunos;
+    }
+    public void update (Aluno aluno){
+        String sql = "update aluno set nome = ?, turma = ?, serie = ? where id = ?";
+
+        try(PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, aluno.getNome());
+            stmt.setString(2, aluno.getTurma());
+            stmt.setString(3, aluno.getSerie());
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
