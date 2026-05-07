@@ -10,6 +10,12 @@ public class Aluno {
     private String serie;
     private String turma;
 
+    //Metodos
+    public int getIdade(){
+        return Period.between(dataNascimento, LocalDate.now()).getYears();
+    }
+
+    // Metodos especiais
     public int getId() {
         return id;
     }
@@ -31,12 +37,12 @@ public class Aluno {
         }
     }
 
-    public int getIdade() {
-        return Period.between(dataNascimento, LocalDate.now()).getYears();
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDate idade) {
-        this.dataNascimento = idade;
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public String getSerie() {
