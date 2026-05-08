@@ -27,8 +27,8 @@ sqlCREATE TABLE aluno (
 
     id INT PRIMARY KEY AUTO_INCREMENT,
     
-    nome VARCHAR(100) NOT NULL
-    ,
+    nome VARCHAR(100) NOT NULL,
+    
     data_nascimento DATE NOT NULL,
     
     serie VARCHAR(10) NOT NULL,
