@@ -82,6 +82,18 @@ public class AlunoDAO {
             e.printStackTrace();
         }
     }
+    public void delete(int id){
+        String sql = "delete from aluno where id = ?";
+
+        try(PreparedStatement stmt = conexao.prepareStatement(sql)){
+            stmt.setInt(1, id);;
+            stmt.executeUpdate();
+            System.out.println("Aluno deletado com sucesso!!");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
 
