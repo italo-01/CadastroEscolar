@@ -22,13 +22,20 @@ Configure a conexão com o banco de dados em Conexao.java
 Execute o arquivo Main.java
 
 Banco de dados
+
 sqlCREATE TABLE aluno (
+
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100) NOT NULL,
+    
+    nome VARCHAR(100) NOT NULL
+    ,
     data_nascimento DATE NOT NULL,
+    
     serie VARCHAR(10) NOT NULL,
+    
     turma VARCHAR(1) NOT NULL
 );
+
 Autor
-Seu Italo costa ribeiro
+Italo costa ribeiro.
 
